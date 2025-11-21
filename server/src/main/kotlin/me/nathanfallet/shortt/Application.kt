@@ -3,8 +3,9 @@ package me.nathanfallet.shortt
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
+import me.nathanfallet.shortt.config.configureDI
+import me.nathanfallet.shortt.config.configureRouting
+import me.nathanfallet.shortt.config.configureSerialization
 
 fun main() {
     embeddedServer(Netty, port = SERVER_PORT, host = "0.0.0.0", module = Application::module)
@@ -12,9 +13,7 @@ fun main() {
 }
 
 fun Application.module() {
-    routing {
-        get("/") {
-            call.respondText("Ktor: ${Greeting().greet()}")
-        }
-    }
+    configureSerialization()
+    configureDI()
+    configureRouting()
 }
