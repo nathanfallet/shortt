@@ -11,18 +11,18 @@ class UsersRepositoryImpl(
 ) : UsersRepository {
 
     // TODO: Setup real database
-    private val users = hashMapOf<String, User>()
+    private val users = hashMapOf<Uuid, User>()
 
     override suspend fun findAll(): List<User> {
         return users.values.toList()
     }
 
     override suspend fun findById(id: Uuid): User? {
-        return users[id.toString()]
+        return users[id]
     }
 
     override suspend fun create(user: User): User {
-        users[user.id.toString()] = user
+        users[user.id] = user
         return user
     }
 

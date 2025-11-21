@@ -22,6 +22,7 @@ dependencies {
     implementation(libs.ktor.serializationKotlinxJson)
     implementation(libs.ktor.serverResources)
     implementation(libs.ktor.serverMetricsMicrometer)
+    implementation(libs.ktor.serverAuthJwt)
     implementation(libs.ktor.serverNetty)
     implementation(libs.koin.ktor)
     implementation(libs.opentelemetry.api)

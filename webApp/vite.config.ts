@@ -8,5 +8,5 @@ export default defineConfig({
         outDir: 'dist',
         emptyOutDir: true,
     },
-    server: {port: 8080},
+    server: {port: 3000},
 });
