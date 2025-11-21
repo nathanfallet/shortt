@@ -6,6 +6,7 @@ import io.ktor.server.netty.*
 import me.nathanfallet.shortt.config.configureDI
 import me.nathanfallet.shortt.config.configureRouting
 import me.nathanfallet.shortt.config.configureSerialization
+import me.nathanfallet.shortt.config.configureTelemetry
 
 fun main() {
     embeddedServer(Netty, port = SERVER_PORT, host = "0.0.0.0", module = Application::module)
@@ -15,5 +16,6 @@ fun main() {
 fun Application.module() {
     configureSerialization()
     configureDI()
+    configureTelemetry()
     configureRouting()
 }
