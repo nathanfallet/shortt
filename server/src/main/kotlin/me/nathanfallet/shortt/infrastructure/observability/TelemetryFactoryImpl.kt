@@ -1,6 +1,7 @@
 package me.nathanfallet.shortt.infrastructure.observability
 
 import io.opentelemetry.api.GlobalOpenTelemetry
+import io.opentelemetry.api.OpenTelemetry
 import io.opentelemetry.api.logs.LoggerProvider
 import io.opentelemetry.api.metrics.Meter
 import io.opentelemetry.api.trace.Tracer
@@ -10,7 +11,7 @@ import io.opentelemetry.semconv.ServiceAttributes
 
 class TelemetryFactoryImpl : TelemetryFactory {
 
-    override val sdk: OpenTelemetrySdk by lazy {
+    private val sdk: OpenTelemetrySdk by lazy {
         AutoConfiguredOpenTelemetrySdk.builder()
             .addResourceCustomizer { oldResource, _ ->
                 oldResource.toBuilder()
@@ -24,6 +25,7 @@ class TelemetryFactoryImpl : TelemetryFactory {
             .also { GlobalOpenTelemetry.set(it) }
     }
 
+    override fun getOpenTelemetry(): OpenTelemetry = sdk
     override fun getTracer(): Tracer = sdk.getTracer("shortt")
     override fun getMeter(): Meter = sdk.getMeter("shortt")
     override fun getLoggerProvider(): LoggerProvider = sdk.logsBridge

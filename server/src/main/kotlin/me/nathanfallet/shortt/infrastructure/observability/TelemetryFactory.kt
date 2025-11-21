@@ -7,7 +7,7 @@ import io.opentelemetry.api.trace.Tracer
 
 interface TelemetryFactory {
 
-    val sdk: OpenTelemetry
+    fun getOpenTelemetry(): OpenTelemetry
     fun getTracer(): Tracer
     fun getMeter(): Meter
     fun getLoggerProvider(): LoggerProvider

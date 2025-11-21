@@ -10,9 +10,9 @@ import org.koin.ktor.ext.inject
 fun Application.configureTelemetry() {
     val openTelemetryFactory by inject<TelemetryFactory>()
     install(KtorServerTelemetry) {
-        setOpenTelemetry(openTelemetryFactory.sdk)
+        setOpenTelemetry(openTelemetryFactory.getOpenTelemetry())
     }
-    val appMicrometerRegistry = OpenTelemetryMeterRegistry.create(openTelemetryFactory.sdk)
+    val appMicrometerRegistry = OpenTelemetryMeterRegistry.create(openTelemetryFactory.getOpenTelemetry())
     install(MicrometerMetrics) {
         registry = appMicrometerRegistry
     }

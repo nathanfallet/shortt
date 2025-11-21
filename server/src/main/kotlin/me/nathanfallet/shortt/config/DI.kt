@@ -7,6 +7,10 @@ import me.nathanfallet.shortt.domain.services.MetricsCollector
 import me.nathanfallet.shortt.domain.usecases.links.GetLinksForUserUseCase
 import me.nathanfallet.shortt.domain.usecases.links.GetLinksForUserUseCaseImpl
 import me.nathanfallet.shortt.domain.usecases.users.*
+import me.nathanfallet.shortt.infrastructure.database.DatabaseFactory
+import me.nathanfallet.shortt.infrastructure.database.DatabaseFactoryImpl
+import me.nathanfallet.shortt.infrastructure.database.TransactionManager
+import me.nathanfallet.shortt.infrastructure.database.TransactionManagerImpl
 import me.nathanfallet.shortt.infrastructure.database.repositories.links.LinksRepositoryImpl
 import me.nathanfallet.shortt.infrastructure.database.repositories.users.UsersRepositoryImpl
 import me.nathanfallet.shortt.infrastructure.observability.OpenTelemetryMetrics
@@ -20,18 +24,20 @@ import org.koin.ktor.plugin.Koin
 fun Application.configureDI() {
     install(Koin) {
         val applicationModule = module {
+            single<DatabaseFactory> { DatabaseFactoryImpl() }
+            single<TransactionManager> { TransactionManagerImpl(get()) }
             single<TelemetryFactory> { TelemetryFactoryImpl() }
             single<MetricsCollector> { OpenTelemetryMetrics(get()) }
         }
         val usersModule = module {
-            single<UsersRepository> { UsersRepositoryImpl() }
+            single<UsersRepository> { UsersRepositoryImpl(get()) }
             single<GetUsersUseCase> { GetUsersUseCaseImpl(get()) }
             single<CreateUserUseCase> { CreateUserUseCaseImpl(get()) }
             single<GetUserByIdUseCase> { GetUserByIdUseCaseImpl(get()) }
             single { UsersRoutesDependencies(get(), get(), get()) }
         }
         val linksModule = module {
-            single<LinksRepository> { LinksRepositoryImpl() }
+            single<LinksRepository> { LinksRepositoryImpl(get()) }
             single<GetLinksForUserUseCase> { GetLinksForUserUseCaseImpl(get()) }
             single { LinksRoutesDependencies(get()) }
         }

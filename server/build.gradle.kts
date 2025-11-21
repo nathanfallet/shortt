@@ -33,6 +33,8 @@ dependencies {
     implementation(libs.opentelemetry.semconv)
     implementation(libs.opentelemetry.ktor)
     implementation(libs.opentelemetry.micrometer)
+    implementation(libs.exposed.core)
+    implementation(libs.exposed.jdbc)
     testImplementation(libs.ktor.serverTestHost)
     testImplementation(libs.kotlin.testJunit)
 }
