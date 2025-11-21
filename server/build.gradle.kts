@@ -22,6 +22,7 @@ dependencies {
     implementation(libs.ktor.serializationKotlinxJson)
     implementation(libs.ktor.serverResources)
     implementation(libs.ktor.serverNetty)
+    implementation(libs.koin.ktor)
     testImplementation(libs.ktor.serverTestHost)
     testImplementation(libs.kotlin.testJunit)
 }

@@ -1,20 +1,22 @@
 package me.nathanfallet.shortt
 
 import io.ktor.client.request.*
-import io.ktor.client.statement.*
 import io.ktor.http.*
+import io.ktor.server.config.*
 import io.ktor.server.testing.*
-import kotlin.test.*
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class ApplicationTest {
-
     @Test
-    fun testRoot() = testApplication {
+    fun testStartup() = testApplication {
+        environment {
+            config = ApplicationConfig("application.test.conf")
+        }
         application {
             module()
         }
-        val response = client.get("/")
+        val response = client.get("/healthz")
         assertEquals(HttpStatusCode.OK, response.status)
-        assertEquals("Ktor: ${Greeting().greet()}", response.bodyAsText())
     }
 }

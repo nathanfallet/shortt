@@ -1,4 +1,4 @@
-package me.nathanfallet.shortt.domain.models
+package me.nathanfallet.shortt.domain.models.users
 
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport

@@ -1,4 +1,4 @@
-package me.nathanfallet.shortt.presentation.requests
+package me.nathanfallet.shortt.presentation.requests.users
 
 import kotlinx.serialization.Serializable
 import kotlin.js.ExperimentalJsExport

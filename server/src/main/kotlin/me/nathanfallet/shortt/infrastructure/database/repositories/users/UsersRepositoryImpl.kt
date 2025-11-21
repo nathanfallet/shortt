@@ -1,14 +1,14 @@
-package me.nathanfallet.shortt.infrastructure.database.repositories
+package me.nathanfallet.shortt.infrastructure.database.repositories.users
 
-import me.nathanfallet.shortt.domain.models.User
-import me.nathanfallet.shortt.domain.repositories.UserRepository
+import me.nathanfallet.shortt.domain.models.users.User
+import me.nathanfallet.shortt.domain.repositories.users.UsersRepository
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
 
 @OptIn(ExperimentalUuidApi::class)
-class UserRepositoryImpl(
+class UsersRepositoryImpl(
 
-) : UserRepository {
+) : UsersRepository {
 
     // TODO: Setup real database
     private val users = hashMapOf<String, User>()

@@ -1,4 +1,4 @@
-package me.nathanfallet.shortt.presentation.resources
+package me.nathanfallet.shortt.presentation.resources.users
 
 import io.ktor.resources.*
 import kotlinx.serialization.Serializable
