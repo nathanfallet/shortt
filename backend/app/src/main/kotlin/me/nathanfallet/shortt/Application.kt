@@ -7,6 +7,7 @@ import me.nathanfallet.shortt.config.configureDI
 import me.nathanfallet.shortt.config.configureRouting
 import me.nathanfallet.shortt.config.configureSerialization
 import me.nathanfallet.shortt.config.configureTelemetry
+import me.nathanfallet.shortt.presentation.middlewares.ErrorHandlingMiddleware
 
 fun main() {
     embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
@@ -18,4 +19,5 @@ fun Application.module() {
     configureDI()
     configureTelemetry()
     configureRouting()
+    ErrorHandlingMiddleware().install(this)
 }

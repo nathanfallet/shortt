@@ -18,6 +18,7 @@ kotlin {
 
             api(libs.ktor.serverCore)
             api(libs.ktor.serverResources)
+            api(libs.ktor.serverStatusPages)
             api(libs.ktor.serverAuthJwt)
         }
         commonTest.dependencies {
