@@ -6,7 +6,8 @@ import me.nathanfallet.shortt.config.configureDI
 import me.nathanfallet.shortt.config.configureRouting
 import me.nathanfallet.shortt.config.configureSerialization
 import me.nathanfallet.shortt.config.configureTelemetry
-import me.nathanfallet.shortt.presentation.middlewares.ErrorHandlingMiddleware
+import me.nathanfallet.shortt.presentation.middlewares.configureErrorHandling
+import me.nathanfallet.shortt.presentation.middlewares.configureValidation
 
 fun main(args: Array<String>): Unit = EngineMain.main(args)
 
@@ -14,6 +15,7 @@ fun Application.module() {
     configureSerialization()
     configureDI()
     configureTelemetry()
+    configureValidation()
+    configureErrorHandling()
     configureRouting()
-    ErrorHandlingMiddleware().install(this)
 }

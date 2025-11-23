@@ -7,6 +7,7 @@ interface UsersRepository {
 
     suspend fun findAll(): List<User>
     suspend fun findById(id: Uuid): User?
-    suspend fun create(user: User): User
+    suspend fun findByUsername(username: String): User?
+    suspend fun create(username: String, password: String): User
 
 }

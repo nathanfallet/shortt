@@ -8,4 +8,7 @@ import kotlinx.serialization.Serializable
 class AuthApi {
     @Resource("register")
     class Register(val parent: AuthApi = AuthApi())
+
+    @Resource("login")
+    class Login(val parent: AuthApi = AuthApi())
 }

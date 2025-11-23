@@ -6,6 +6,7 @@ import me.nathanfallet.shortt.infrastructure.database.TransactionManager
 import me.nathanfallet.shortt.infrastructure.database.tables.users.UsersTable
 import org.jetbrains.exposed.v1.core.eq
 import org.jetbrains.exposed.v1.jdbc.SchemaUtils
+import org.jetbrains.exposed.v1.jdbc.insert
 import org.jetbrains.exposed.v1.jdbc.selectAll
 import kotlin.uuid.Uuid
 import kotlin.uuid.toJavaUuid
@@ -36,9 +37,21 @@ class UsersRepositoryImpl(
                 .firstOrNull()
         }
 
-    override suspend fun create(user: User): User {
-        // TODO - might need to change the signature
-        return user
-    }
+    override suspend fun findByUsername(username: String): User? =
+        transactionManager.suspendTransaction {
+            UsersTable
+                .selectAll()
+                .where { UsersTable.username eq username }
+                .map(UsersTable::toUser)
+                .firstOrNull()
+        }
+
+    override suspend fun create(username: String, password: String): User =
+        transactionManager.suspendTransaction {
+            UsersTable.insert {
+                it[UsersTable.username] = username
+                it[UsersTable.password] = password
+            }.resultedValues!!.map(UsersTable::toUser).first()
+        }
 
 }

@@ -1,11 +1,11 @@
-package me.nathanfallet.shortt.domain.models.users
+package me.nathanfallet.shortt.api.requests.auth
 
 import kotlinx.serialization.Serializable
-import kotlin.uuid.Uuid
+import kotlin.js.JsExport
 
 @Serializable
-data class User(
-    val id: Uuid,
+@JsExport
+data class LoginRequest(
     val username: String,
     val password: String,
 )
