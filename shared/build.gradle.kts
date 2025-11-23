@@ -31,6 +31,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.backend.api)
+            api(projects.backend.client)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

@@ -29,6 +29,7 @@ dependencyResolutionManagement {
 }
 
 include(":backend:api")
+include(":backend:client")
 include(":backend:app")
 include(":backend:domain")
 include(":backend:infrastructure")
