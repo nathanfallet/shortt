@@ -9,7 +9,7 @@ class OpenTelemetryMetrics(
     private val linksClickedCounter = telemetryFactory.getMeter()
         .counterBuilder("links_clicked")
         .setDescription("Number of link clicks")
-        .setUnit("1")
+        .setUnit("{click}")
         .build()
 
     override fun recordLinkClicked() {
