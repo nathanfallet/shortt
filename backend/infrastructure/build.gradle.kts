@@ -26,6 +26,7 @@ kotlin {
             api(libs.opentelemetry.micrometer)
             api(libs.exposed.core)
             api(libs.exposed.jdbc)
+            api(libs.bcrypt)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

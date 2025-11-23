@@ -5,8 +5,8 @@ import kotlinx.serialization.Serializable
 import kotlin.uuid.Uuid
 
 @Serializable
-@Resource("/users")
-class Users {
+@Resource("/api/v1/users")
+class UsersApi {
     @Resource("{id}")
-    class Id(val parent: Users = Users(), val id: Uuid)
+    class Id(val parent: UsersApi = UsersApi(), val id: Uuid)
 }

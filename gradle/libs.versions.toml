@@ -56,6 +56,7 @@ opentelemetry-ktor = { module = "io.opentelemetry.instrumentation:opentelemetry-
 opentelemetry-micrometer = { module = "io.opentelemetry.instrumentation:opentelemetry-micrometer-1.5", version.ref = "opentelemetry-instrumentation" }
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
 exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
+bcrypt = { module = "at.favre.lib:bcrypt", version = "0.10.2" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
