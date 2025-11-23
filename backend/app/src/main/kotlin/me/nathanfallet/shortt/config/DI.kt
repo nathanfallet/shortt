@@ -12,7 +12,7 @@ import me.nathanfallet.shortt.domain.usecases.links.GetLinksForUserUseCaseImpl
 import me.nathanfallet.shortt.domain.usecases.users.*
 import me.nathanfallet.shortt.infrastructure.bcrypt.BCryptPasswordEncoder
 import me.nathanfallet.shortt.infrastructure.database.DatabaseFactory
-import me.nathanfallet.shortt.infrastructure.database.DatabaseFactoryImpl
+import me.nathanfallet.shortt.infrastructure.database.DatabaseFactoryMysqlImpl
 import me.nathanfallet.shortt.infrastructure.database.TransactionManager
 import me.nathanfallet.shortt.infrastructure.database.TransactionManagerImpl
 import me.nathanfallet.shortt.infrastructure.database.repositories.links.LinksRepositoryImpl
@@ -29,7 +29,19 @@ import org.koin.ktor.plugin.Koin
 fun Application.configureDI() {
     install(Koin) {
         val applicationModule = module {
-            single<DatabaseFactory> { DatabaseFactoryImpl() }
+            single<DatabaseFactory> {
+                DatabaseFactoryMysqlImpl(
+                    get(),
+                    environment.config.property("database.host").getString(),
+                    environment.config.property("database.port").getString().toIntOrNull() ?: 3306,
+                    environment.config.property("database.name").getString(),
+                    environment.config.property("database.user").getString(),
+                    environment.config.property("database.password").getString(),
+                    environment.config.property("database.useSSL").getString().toBooleanStrictOrNull() == true,
+                    environment.config.property("database.sslMode").getString(),
+                    environment.config.property("database.maximumPoolSize").getString().toIntOrNull() ?: 10,
+                )
+            }
             single<TransactionManager> { TransactionManagerImpl(get()) }
             single<TelemetryFactory> { TelemetryFactoryImpl() }
             single<MetricsCollector> { OpenTelemetryMetrics(get()) }

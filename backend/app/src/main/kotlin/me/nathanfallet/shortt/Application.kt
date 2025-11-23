@@ -1,7 +1,6 @@
 package me.nathanfallet.shortt
 
 import io.ktor.server.application.*
-import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import me.nathanfallet.shortt.config.configureDI
 import me.nathanfallet.shortt.config.configureRouting
@@ -9,10 +8,7 @@ import me.nathanfallet.shortt.config.configureSerialization
 import me.nathanfallet.shortt.config.configureTelemetry
 import me.nathanfallet.shortt.presentation.middlewares.ErrorHandlingMiddleware
 
-fun main() {
-    embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
-        .start(wait = true)
-}
+fun main(args: Array<String>): Unit = EngineMain.main(args)
 
 fun Application.module() {
     configureSerialization()

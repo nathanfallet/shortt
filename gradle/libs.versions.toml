@@ -20,6 +20,9 @@ opentelemetry = "1.56.0"
 opentelemetry-semconv = "1.34.0"
 opentelemetry-instrumentation = "2.22.0-alpha"
 exposed = "1.0.0-rc-3"
+hikari = "7.0.2"
+mysql = "9.5.0"
+bcrypt = "0.10.2"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -54,9 +57,12 @@ opentelemetry-extension-kotlin = { module = "io.opentelemetry:opentelemetry-exte
 opentelemetry-semconv = { module = "io.opentelemetry.semconv:opentelemetry-semconv", version.ref = "opentelemetry-semconv" }
 opentelemetry-ktor = { module = "io.opentelemetry.instrumentation:opentelemetry-ktor-3.0", version.ref = "opentelemetry-instrumentation" }
 opentelemetry-micrometer = { module = "io.opentelemetry.instrumentation:opentelemetry-micrometer-1.5", version.ref = "opentelemetry-instrumentation" }
+opentelemetry-jdbc = { module = "io.opentelemetry.instrumentation:opentelemetry-jdbc", version.ref = "opentelemetry-instrumentation" }
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
 exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
-bcrypt = { module = "at.favre.lib:bcrypt", version = "0.10.2" }
+mysql = { module = "com.mysql:mysql-connector-j", version.ref = "mysql" }
+hikari = { module = "com.zaxxer:HikariCP", version.ref = "hikari" }
+bcrypt = { module = "at.favre.lib:bcrypt", version.ref = "bcrypt" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

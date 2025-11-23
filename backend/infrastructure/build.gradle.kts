@@ -24,8 +24,10 @@ kotlin {
             api(libs.opentelemetry.semconv)
             api(libs.opentelemetry.ktor)
             api(libs.opentelemetry.micrometer)
+            api(libs.opentelemetry.jdbc)
             api(libs.exposed.core)
             api(libs.exposed.jdbc)
+            api(libs.hikari)
             api(libs.bcrypt)
         }
         commonTest.dependencies {
