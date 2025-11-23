@@ -1,4 +1,11 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Web, Server.
+# Shortt
+
+Url shortener built with clean architecture in mind.
+This is an experimental project.
+
+## Technical Overview
+
+This is a Kotlin Multiplatform project targeting Android, iOS, Web and Backend.
 
 * [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
@@ -12,7 +19,7 @@ This is a Kotlin Multiplatform project targeting Android, iOS, Web, Server.
 * [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
   you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
 
-* [/server](./server/src/main/kotlin) is for the Ktor server application.
+* [/backend](./server/src/main/kotlin) is for the Ktor backend application.
 
 * [/shared](./shared/src) is for the code that will be shared between all targets in the project.
   The most important subfolder is [commonMain](./shared/src/commonMain/kotlin). If preferred, you
@@ -42,11 +49,11 @@ in your IDE’s toolbar or run it directly from the terminal:
 
 - on macOS/Linux
   ```shell
-  ./gradlew :server:run
+  ./gradlew :backend:app:run
   ```
 - on Windows
   ```shell
-  .\gradlew.bat :server:run
+  .\gradlew.bat :backend:app:run
   ```
 
 ### Build and Run Web Application

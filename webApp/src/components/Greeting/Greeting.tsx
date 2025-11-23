@@ -2,7 +2,7 @@ import './Greeting.css';
 
 import type {AnimationEvent} from 'react';
 import {useState} from 'react';
-import {Greeting as KotlinGreeting, User} from 'shared';
+import {Greeting as KotlinGreeting} from 'shared';
 
 export const Greeting = () => {
     const greeting = new KotlinGreeting();
@@ -15,14 +15,6 @@ export const Greeting = () => {
         } else {
             setIsVisible(true);
         }
-
-        const user = new User('123e4567-e89b-12d3-a456-426614174000');
-        console.log(user);
-
-        const user2 = {
-            id: '987e6543-e21b-12d3-a456-426614174000',
-        }
-        console.log(user2);
     };
 
     const handleAnimationEnd = (event: AnimationEvent<HTMLDivElement>) => {

@@ -28,6 +28,10 @@ dependencyResolutionManagement {
     }
 }
 
+include(":backend:api")
+include(":backend:app")
+include(":backend:domain")
+include(":backend:infrastructure")
+include(":backend:presentation")
 include(":composeApp")
-include(":server")
 include(":shared")

@@ -30,8 +30,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            api(libs.kotlinx.serialization.json)
-            api(libs.ktor.resources)
+            api(projects.backend.api)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
