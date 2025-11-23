@@ -1,4 +1,4 @@
-package me.nathanfallet.shortt.config
+package me.nathanfallet.shortt.infrastructure.config
 
 import io.ktor.server.application.*
 import io.ktor.server.metrics.micrometer.*

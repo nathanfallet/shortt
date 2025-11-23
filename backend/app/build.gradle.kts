@@ -21,12 +21,7 @@ dependencies {
     implementation(projects.backend.presentation)
 
     implementation(libs.logback)
-    implementation(libs.ktor.serverContentNegotiation)
-    implementation(libs.ktor.serializationKotlinxJson)
-    implementation(libs.ktor.serverMetricsMicrometer)
     implementation(libs.ktor.serverNetty)
-    implementation(libs.koin.ktor)
-    implementation(libs.mysql)
 
     testImplementation(libs.ktor.serverTestHost)
     testImplementation(libs.kotlin.testJunit)

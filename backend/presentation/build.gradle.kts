@@ -16,7 +16,10 @@ kotlin {
             api(projects.backend.api)
             api(projects.backend.domain)
 
+            api(libs.koin.ktor)
             api(libs.ktor.serverCore)
+            api(libs.ktor.serverContentNegotiation)
+            api(libs.ktor.serializationKotlinxJson)
             api(libs.ktor.serverResources)
             api(libs.ktor.serverStatusPages)
             api(libs.ktor.serverRequestValidation)

@@ -1,4 +1,4 @@
-package me.nathanfallet.shortt.config
+package me.nathanfallet.shortt.presentation.config
 
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*

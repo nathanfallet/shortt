@@ -1,4 +1,4 @@
-package me.nathanfallet.shortt.presentation.middlewares
+package me.nathanfallet.shortt.presentation.config
 
 import io.ktor.server.application.*
 import io.ktor.server.plugins.requestvalidation.*

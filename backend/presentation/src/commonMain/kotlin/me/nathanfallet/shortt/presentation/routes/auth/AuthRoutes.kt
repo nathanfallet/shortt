@@ -9,6 +9,8 @@ import me.nathanfallet.shortt.api.requests.auth.RegisterRequest
 import me.nathanfallet.shortt.api.resources.auth.AuthApi
 import me.nathanfallet.shortt.domain.usecases.auth.LoginUserUseCase
 import me.nathanfallet.shortt.domain.usecases.auth.RegisterUserUseCase
+import me.nathanfallet.shortt.presentation.mappers.auth.toLoginResponse
+import me.nathanfallet.shortt.presentation.mappers.auth.toRegisterResponse
 
 data class AuthRoutesDependencies(
     val registerUserUseCase: RegisterUserUseCase,
@@ -19,11 +21,11 @@ fun Route.authRoutes(dependencies: AuthRoutesDependencies) = with(dependencies) 
     post<AuthApi.Register> {
         val request = call.receive<RegisterRequest>()
         val user = registerUserUseCase(request.username, request.password)
-        call.respond(user)
+        call.respond(user.toRegisterResponse())
     }
     post<AuthApi.Login> {
         val request = call.receive<LoginRequest>()
         val authenticatedUser = loginUserUseCase(request.username, request.password)
-        call.respond(authenticatedUser)
+        call.respond(authenticatedUser.toLoginResponse())
     }
 }
