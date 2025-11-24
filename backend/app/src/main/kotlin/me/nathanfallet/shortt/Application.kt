@@ -12,8 +12,14 @@ import me.nathanfallet.shortt.presentation.config.configureValidation
 import me.nathanfallet.shortt.presentation.di.presentationModule
 import org.koin.ktor.plugin.Koin
 
+/**
+ * Main entry point of the application.
+ */
 fun main(args: Array<String>): Unit = EngineMain.main(args)
 
+/**
+ * Ktor application module.
+ */
 fun Application.module() {
     install(Koin) {
         modules(domainModule, infrastructureModule, presentationModule)

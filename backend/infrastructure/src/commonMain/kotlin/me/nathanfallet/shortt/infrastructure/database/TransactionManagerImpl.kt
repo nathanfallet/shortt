@@ -6,7 +6,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jetbrains.exposed.v1.core.Transaction
 
+/**
+ * Implementation of [TransactionManager] using Exposed framework.
+ */
 class TransactionManagerImpl(
+    /**
+     * The database factory to get the database instance.
+     */
     private val databaseFactory: DatabaseFactory,
 ) : TransactionManager {
 

@@ -3,8 +3,14 @@ package me.nathanfallet.shortt.api.responses.links
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 
+/**
+ * Data class representing the response containing a list of shortened links.
+ */
 @Serializable
 @JsExport
 data class LinksResponse(
+    /**
+     * The list of shortened links.
+     */
     val links: List<LinkResponse>,
 )

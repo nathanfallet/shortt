@@ -5,6 +5,9 @@ import me.nathanfallet.shortt.domain.models.users.User
 import me.nathanfallet.shortt.domain.repositories.users.UsersRepository
 import me.nathanfallet.shortt.domain.services.PasswordEncoder
 
+/**
+ * Implementation of [RegisterUserUseCase].
+ */
 class RegisterUserUseCaseImpl(
     private val repository: UsersRepository,
     private val passwordEncoder: PasswordEncoder,

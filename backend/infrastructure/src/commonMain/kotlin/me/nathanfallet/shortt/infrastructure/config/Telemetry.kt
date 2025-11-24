@@ -7,6 +7,9 @@ import io.opentelemetry.instrumentation.micrometer.v1_5.OpenTelemetryMeterRegist
 import me.nathanfallet.shortt.infrastructure.observability.TelemetryFactory
 import org.koin.ktor.ext.inject
 
+/**
+ * Configures telemetry for the Ktor application, including OpenTelemetry and Micrometer metrics.
+ */
 fun Application.configureTelemetry() {
     val openTelemetryFactory by inject<TelemetryFactory>()
     install(KtorServerTelemetry) {

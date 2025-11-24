@@ -4,9 +4,18 @@ import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 import kotlin.uuid.Uuid
 
+/**
+ * Data class representing the response containing the current user's information.
+ */
 @Serializable
 @JsExport
 data class CurrentUserResponse(
+    /**
+     * The unique identifier of the user.
+     */
     val id: Uuid,
+    /**
+     * The username of the user.
+     */
     val username: String,
 )

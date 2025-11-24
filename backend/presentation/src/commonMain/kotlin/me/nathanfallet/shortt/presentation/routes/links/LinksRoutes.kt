@@ -13,11 +13,17 @@ import me.nathanfallet.shortt.domain.usecases.links.GetLinksForUserUseCase
 import me.nathanfallet.shortt.presentation.extensions.userId
 import me.nathanfallet.shortt.presentation.mappers.links.toLinkResponse
 
+/**
+ * Dependencies required for links routes.
+ */
 data class LinksRoutesDependencies(
     val getLinksForUserUseCase: GetLinksForUserUseCase,
     val createLinkUseCase: CreateLinkUseCase,
 )
 
+/**
+ * Configures links routes.
+ */
 fun Route.linksRoutes(dependencies: LinksRoutesDependencies) = with(dependencies) {
     get<LinksApi> {
         val userId = call.userId()

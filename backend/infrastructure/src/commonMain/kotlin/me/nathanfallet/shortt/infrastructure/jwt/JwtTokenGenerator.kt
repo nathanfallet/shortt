@@ -4,10 +4,13 @@ import me.nathanfallet.shortt.domain.models.auth.TokenType
 import me.nathanfallet.shortt.domain.services.TokenGenerator
 import kotlin.uuid.Uuid
 
+/**
+ * JWT implementation of the [TokenGenerator] interface.
+ */
 class JwtTokenGenerator(
 
 ) : TokenGenerator {
     override fun generateToken(userId: Uuid, type: TokenType): String {
-        return ""
+        return "" // TODO
     }
 }

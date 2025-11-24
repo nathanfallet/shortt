@@ -10,6 +10,9 @@ import me.nathanfallet.shortt.api.resources.links.LinksApi
 import me.nathanfallet.shortt.api.responses.links.LinkResponse
 import me.nathanfallet.shortt.api.responses.links.LinksResponse
 
+/**
+ * Implementation of the LinksApiClient interface using Ktor HttpClient.
+ */
 class LinksApiClientImpl(
     private val client: HttpClient,
 ) : LinksApiClient {

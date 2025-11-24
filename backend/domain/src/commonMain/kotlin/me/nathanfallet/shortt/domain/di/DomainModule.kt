@@ -14,6 +14,9 @@ import me.nathanfallet.shortt.domain.usecases.users.GetUsersUseCase
 import me.nathanfallet.shortt.domain.usecases.users.GetUsersUseCaseImpl
 import org.koin.dsl.module
 
+/**
+ * Koin module for domain layer dependencies.
+ */
 val domainModule = module {
     // Auth
     single<RegisterUserUseCase> { RegisterUserUseCaseImpl(get(), get()) }

@@ -11,6 +11,9 @@ import me.nathanfallet.shortt.api.resources.auth.AuthApi
 import me.nathanfallet.shortt.api.responses.auth.LoginResponse
 import me.nathanfallet.shortt.api.responses.auth.RegisterResponse
 
+/**
+ * Implementation of the AuthApiClient interface using Ktor HttpClient.
+ */
 class AuthApiClientImpl(
     private val client: HttpClient,
 ) : AuthApiClient {

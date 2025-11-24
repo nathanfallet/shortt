@@ -4,9 +4,24 @@ import io.ktor.resources.*
 import kotlinx.serialization.Serializable
 import kotlin.uuid.Uuid
 
+/**
+ * Resource class representing link-related API endpoints.
+ */
 @Serializable
 @Resource("/api/v1/links")
 class LinksApi {
+    /**
+     * Resource class representing the endpoint for creating a new shortened link.
+     */
     @Resource("{id}")
-    class Id(val parent: LinksApi = LinksApi(), val id: Uuid)
+    class Id(
+        /**
+         * The parent LinksApi resource.
+         */
+        val parent: LinksApi = LinksApi(),
+        /**
+         * The unique identifier of the link.
+         */
+        val id: Uuid,
+    )
 }

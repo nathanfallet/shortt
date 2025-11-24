@@ -4,6 +4,9 @@ import me.nathanfallet.shortt.domain.models.users.User
 import me.nathanfallet.shortt.domain.repositories.users.UsersRepository
 import kotlin.uuid.Uuid
 
+/**
+ * Implementation of the [GetUserByIdUseCase] interface.
+ */
 class GetUserByIdUseCaseImpl(
     private val usersRepository: UsersRepository,
 ) : GetUserByIdUseCase {

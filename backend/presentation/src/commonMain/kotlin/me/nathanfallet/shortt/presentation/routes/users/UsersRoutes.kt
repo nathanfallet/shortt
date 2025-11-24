@@ -8,11 +8,17 @@ import me.nathanfallet.shortt.api.resources.users.UsersApi
 import me.nathanfallet.shortt.domain.usecases.users.GetUserByIdUseCase
 import me.nathanfallet.shortt.domain.usecases.users.GetUsersUseCase
 
+/**
+ * Dependencies required for users routes.
+ */
 data class UsersRoutesDependencies(
     val getUsersUseCase: GetUsersUseCase,
     val getUserByIdUseCase: GetUserByIdUseCase,
 )
 
+/**
+ * Configures users routes.
+ */
 fun Route.usersRoutes(dependencies: UsersRoutesDependencies) = with(dependencies) {
     get<UsersApi> {
         val users = getUsersUseCase()

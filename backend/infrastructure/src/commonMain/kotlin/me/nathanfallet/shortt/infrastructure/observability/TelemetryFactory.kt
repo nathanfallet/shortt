@@ -5,11 +5,27 @@ import io.opentelemetry.api.logs.LoggerProvider
 import io.opentelemetry.api.metrics.Meter
 import io.opentelemetry.api.trace.Tracer
 
+/**
+ * Factory interface for obtaining OpenTelemetry components.
+ */
 interface TelemetryFactory {
-
+    /**
+     * Gets the OpenTelemetry instance.
+     */
     fun getOpenTelemetry(): OpenTelemetry
-    fun getTracer(): Tracer
-    fun getMeter(): Meter
-    fun getLoggerProvider(): LoggerProvider
 
+    /**
+     * Gets the Tracer instance.
+     */
+    fun getTracer(): Tracer
+
+    /**
+     * Gets the Meter instance.
+     */
+    fun getMeter(): Meter
+
+    /**
+     * Gets the LoggerProvider instance.
+     */
+    fun getLoggerProvider(): LoggerProvider
 }

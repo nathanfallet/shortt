@@ -7,6 +7,9 @@ import me.nathanfallet.shortt.domain.repositories.users.UsersRepository
 import me.nathanfallet.shortt.domain.services.PasswordEncoder
 import me.nathanfallet.shortt.domain.services.TokenGenerator
 
+/**
+ * Implementation of [LoginUserUseCase].
+ */
 class LoginUserUseCaseImpl(
     private val repository: UsersRepository,
     private val passwordEncoder: PasswordEncoder,

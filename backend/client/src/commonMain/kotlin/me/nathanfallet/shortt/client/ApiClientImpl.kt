@@ -9,6 +9,9 @@ import me.nathanfallet.shortt.api.Serialization
 import me.nathanfallet.shortt.client.api.auth.AuthApiClientImpl
 import me.nathanfallet.shortt.client.api.links.LinksApiClientImpl
 
+/**
+ * Implementation of the ApiClient interface.
+ */
 class ApiClientImpl(
     private val baseUrl: String,
 ) : ApiClient {

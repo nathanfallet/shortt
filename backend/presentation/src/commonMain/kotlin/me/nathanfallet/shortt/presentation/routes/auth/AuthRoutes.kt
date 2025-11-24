@@ -12,11 +12,17 @@ import me.nathanfallet.shortt.domain.usecases.auth.RegisterUserUseCase
 import me.nathanfallet.shortt.presentation.mappers.auth.toLoginResponse
 import me.nathanfallet.shortt.presentation.mappers.auth.toRegisterResponse
 
+/**
+ * Dependencies required for authentication routes.
+ */
 data class AuthRoutesDependencies(
     val registerUserUseCase: RegisterUserUseCase,
     val loginUserUseCase: LoginUserUseCase,
 )
 
+/**
+ * Configures authentication routes.
+ */
 fun Route.authRoutes(dependencies: AuthRoutesDependencies) = with(dependencies) {
     post<AuthApi.Register> {
         val request = call.receive<RegisterRequest>()

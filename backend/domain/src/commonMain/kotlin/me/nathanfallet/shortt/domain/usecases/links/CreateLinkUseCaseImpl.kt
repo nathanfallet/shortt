@@ -4,6 +4,9 @@ import me.nathanfallet.shortt.domain.models.links.Link
 import me.nathanfallet.shortt.domain.repositories.links.LinksRepository
 import kotlin.uuid.Uuid
 
+/**
+ * Implementation of the [CreateLinkUseCase] interface.
+ */
 class CreateLinkUseCaseImpl(
     private val linksRepository: LinksRepository,
 ) : CreateLinkUseCase {

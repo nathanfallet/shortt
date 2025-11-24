@@ -6,15 +6,45 @@ import io.opentelemetry.instrumentation.jdbc.datasource.JdbcTelemetry
 import me.nathanfallet.shortt.infrastructure.observability.TelemetryFactory
 import org.jetbrains.exposed.v1.jdbc.Database
 
+/**
+ * Implementation of [DatabaseFactory] for MySQL databases.
+ */
 class MySQLDatabaseFactory(
+    /**
+     * Telemetry factory for OpenTelemetry integration.
+     */
     telemetryFactory: TelemetryFactory,
+    /**
+     * Database host address.
+     */
     host: String,
+    /**
+     * Database port number.
+     */
     port: Int,
+    /**
+     * Database name.
+     */
     name: String,
+    /**
+     * Database username.
+     */
     user: String,
+    /**
+     * Database user password.
+     */
     password: String,
+    /**
+     * Flag indicating whether to use SSL for the connection.
+     */
     useSSL: Boolean,
+    /**
+     * SSL mode for the connection.
+     */
     sslMode: String,
+    /**
+     * Maximum size of the connection pool.
+     */
     maximumPoolSize: Int,
 ) : DatabaseFactory {
 

@@ -1,5 +1,16 @@
 package me.nathanfallet.shortt.domain.models.auth
 
+/**
+ * Enum representing the type of token.
+ */
 enum class TokenType {
-    ACCESS, REFRESH
+    /**
+     * Access token type.
+     */
+    ACCESS,
+
+    /**
+     * Refresh token type.
+     */
+    REFRESH
 }

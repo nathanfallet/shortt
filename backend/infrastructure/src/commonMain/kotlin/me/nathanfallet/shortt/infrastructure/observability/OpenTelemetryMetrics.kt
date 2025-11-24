@@ -2,6 +2,9 @@ package me.nathanfallet.shortt.infrastructure.observability
 
 import me.nathanfallet.shortt.domain.services.MetricsCollector
 
+/**
+ * Implementation of [MetricsCollector] using OpenTelemetry.
+ */
 class OpenTelemetryMetrics(
     telemetryFactory: TelemetryFactory,
 ) : MetricsCollector {

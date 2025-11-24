@@ -9,6 +9,9 @@ import me.nathanfallet.shortt.domain.exceptions.auth.InvalidTokenException
 import me.nathanfallet.shortt.domain.exceptions.links.SlugAlreadyExistsException
 import me.nathanfallet.shortt.domain.exceptions.users.UserAlreadyExistsException
 
+/**
+ * Configures error handling for the Ktor application.
+ */
 fun Application.configureErrorHandling() {
     install(StatusPages) {
         // Auth

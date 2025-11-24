@@ -11,6 +11,9 @@ import org.jetbrains.exposed.v1.jdbc.selectAll
 import kotlin.uuid.Uuid
 import kotlin.uuid.toJavaUuid
 
+/**
+ * Implementation of the [UsersRepository] interface using Exposed framework.
+ */
 class UsersRepositoryImpl(
     private val transactionManager: TransactionManager,
 ) : UsersRepository {

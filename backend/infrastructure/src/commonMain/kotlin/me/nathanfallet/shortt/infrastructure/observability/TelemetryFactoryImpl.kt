@@ -9,6 +9,9 @@ import io.opentelemetry.sdk.OpenTelemetrySdk
 import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk
 import io.opentelemetry.semconv.ServiceAttributes
 
+/**
+ * Implementation of [TelemetryFactory] using OpenTelemetry SDK with auto-configuration.
+ */
 class TelemetryFactoryImpl : TelemetryFactory {
 
     private val sdk: OpenTelemetrySdk by lazy {

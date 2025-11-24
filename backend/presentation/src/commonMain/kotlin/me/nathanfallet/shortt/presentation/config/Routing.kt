@@ -8,6 +8,9 @@ import me.nathanfallet.shortt.presentation.routes.links.linksRoutes
 import me.nathanfallet.shortt.presentation.routes.users.usersRoutes
 import org.koin.ktor.ext.get
 
+/**
+ * Configures routing for the Ktor application.
+ */
 fun Application.configureRouting() {
     install(Resources)
     routing {

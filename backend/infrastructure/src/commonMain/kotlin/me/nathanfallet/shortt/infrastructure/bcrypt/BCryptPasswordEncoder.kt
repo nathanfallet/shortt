@@ -3,6 +3,9 @@ package me.nathanfallet.shortt.infrastructure.bcrypt
 import at.favre.lib.crypto.bcrypt.BCrypt
 import me.nathanfallet.shortt.domain.services.PasswordEncoder
 
+/**
+ * Implementation of [PasswordEncoder] using BCrypt hashing algorithm.
+ */
 class BCryptPasswordEncoder : PasswordEncoder {
 
     override fun encode(rawPassword: String): String =

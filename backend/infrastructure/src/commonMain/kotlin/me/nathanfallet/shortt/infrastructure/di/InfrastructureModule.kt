@@ -19,6 +19,9 @@ import me.nathanfallet.shortt.infrastructure.observability.TelemetryFactory
 import me.nathanfallet.shortt.infrastructure.observability.TelemetryFactoryImpl
 import org.koin.dsl.module
 
+/**
+ * Koin module for infrastructure layer dependencies.
+ */
 val Application.infrastructureModule
     get() = module {
         // Services
