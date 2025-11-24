@@ -14,6 +14,10 @@ import me.nathanfallet.shortt.infrastructure.database.TransactionManagerImpl
 import me.nathanfallet.shortt.infrastructure.database.repositories.links.LinksRepositoryImpl
 import me.nathanfallet.shortt.infrastructure.database.repositories.users.UsersRepositoryImpl
 import me.nathanfallet.shortt.infrastructure.jwt.JwtTokenGenerator
+import me.nathanfallet.shortt.infrastructure.messaging.MessageBroker
+import me.nathanfallet.shortt.infrastructure.messaging.RabbitMQFactory
+import me.nathanfallet.shortt.infrastructure.messaging.RabbitMQFactoryImpl
+import me.nathanfallet.shortt.infrastructure.messaging.RabbitMQMessageBroker
 import me.nathanfallet.shortt.infrastructure.observability.OpenTelemetryMetrics
 import me.nathanfallet.shortt.infrastructure.observability.TelemetryFactory
 import me.nathanfallet.shortt.infrastructure.observability.TelemetryFactoryImpl
@@ -39,6 +43,17 @@ val Application.infrastructureModule
             )
         }
         single<TransactionManager> { TransactionManagerImpl(get()) }
+        single<RabbitMQFactory> {
+            RabbitMQFactoryImpl(
+                get<Application>(),
+                environment.config.property("rabbitmq.host").getString(),
+                environment.config.property("rabbitmq.port").getString().toIntOrNull() ?: 5672,
+                environment.config.property("rabbitmq.user").getString(),
+                environment.config.property("rabbitmq.password").getString(),
+                get(),
+            )
+        }
+        single<MessageBroker> { RabbitMQMessageBroker(get()) }
         single<TelemetryFactory> { TelemetryFactoryImpl() }
         single<MetricsCollector> { OpenTelemetryMetrics(get()) }
         single<PasswordEncoder> { BCryptPasswordEncoder() }

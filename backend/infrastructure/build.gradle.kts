@@ -32,6 +32,8 @@ kotlin {
             api(libs.exposed.jdbc)
             api(libs.mysql)
             api(libs.hikari)
+            api(libs.kourier.clientRobust)
+            api(libs.kourier.clientOpentelemetry)
             api(libs.bcrypt)
         }
         commonTest.dependencies {
@@ -39,4 +41,3 @@ kotlin {
         }
     }
 }
-
