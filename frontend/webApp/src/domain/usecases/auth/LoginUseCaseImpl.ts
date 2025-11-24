@@ -6,9 +6,13 @@ export class LoginUseCaseImpl implements LoginUseCase {
     constructor(private repository: AuthRepository) {
     }
 
-    async invoke(username: string, password: string): Promise<AuthenticatedUser | null> {
+    async invoke(username: string, password: string): Promise<AuthenticatedUser> {
         const authenticatedUser = await this.repository.login(username, password);
+        if (authenticatedUser == null) throw new Error("Invalid credentials");
+
         // TODO: Save token etc...
+        // Or maybe not, because it looks like the hook is doing it... (does it make sense tho?)
+
         return authenticatedUser;
     }
 }
