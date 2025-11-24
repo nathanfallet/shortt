@@ -7,4 +7,5 @@ import kotlin.js.JsExport
 @JsExport
 data class CreateLinkRequest(
     val url: String,
+    val slug: String? = null,
 )

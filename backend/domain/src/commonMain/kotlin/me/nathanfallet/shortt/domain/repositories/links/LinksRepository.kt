@@ -7,5 +7,6 @@ interface LinksRepository {
 
     suspend fun findByUserId(userId: Uuid): List<Link>
     suspend fun findById(id: Uuid): Link?
+    suspend fun create(url: String, slug: String, userId: Uuid): Link
 
 }

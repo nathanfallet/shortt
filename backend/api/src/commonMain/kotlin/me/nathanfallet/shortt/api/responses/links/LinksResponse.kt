@@ -6,5 +6,5 @@ import kotlin.js.JsExport
 @Serializable
 @JsExport
 data class LinksResponse(
-    val links: List<String>, // Create a LinkResponse instead?
+    val links: List<LinkResponse>,
 )

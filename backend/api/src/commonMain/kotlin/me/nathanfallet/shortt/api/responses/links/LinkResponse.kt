@@ -1,12 +1,13 @@
-package me.nathanfallet.shortt.domain.models.links
+package me.nathanfallet.shortt.api.responses.links
 
 import kotlinx.serialization.Serializable
+import kotlin.js.JsExport
 import kotlin.uuid.Uuid
 
 @Serializable
-data class Link(
+@JsExport
+data class LinkResponse(
     val id: Uuid,
-    val userId: Uuid,
     val url: String,
     val slug: String,
 )

@@ -4,6 +4,8 @@ import me.nathanfallet.shortt.domain.usecases.auth.LoginUserUseCase
 import me.nathanfallet.shortt.domain.usecases.auth.LoginUserUseCaseImpl
 import me.nathanfallet.shortt.domain.usecases.auth.RegisterUserUseCase
 import me.nathanfallet.shortt.domain.usecases.auth.RegisterUserUseCaseImpl
+import me.nathanfallet.shortt.domain.usecases.links.CreateLinkUseCase
+import me.nathanfallet.shortt.domain.usecases.links.CreateLinkUseCaseImpl
 import me.nathanfallet.shortt.domain.usecases.links.GetLinksForUserUseCase
 import me.nathanfallet.shortt.domain.usecases.links.GetLinksForUserUseCaseImpl
 import me.nathanfallet.shortt.domain.usecases.users.GetUserByIdUseCase
@@ -23,4 +25,5 @@ val domainModule = module {
 
     // Links
     single<GetLinksForUserUseCase> { GetLinksForUserUseCaseImpl(get()) }
+    single<CreateLinkUseCase> { CreateLinkUseCaseImpl(get()) }
 }

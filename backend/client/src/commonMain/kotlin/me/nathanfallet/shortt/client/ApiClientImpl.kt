@@ -7,6 +7,7 @@ import io.ktor.client.plugins.resources.*
 import io.ktor.serialization.kotlinx.json.*
 import me.nathanfallet.shortt.api.Serialization
 import me.nathanfallet.shortt.client.api.auth.AuthApiClientImpl
+import me.nathanfallet.shortt.client.api.links.LinksApiClientImpl
 
 class ApiClientImpl(
     private val baseUrl: String,
@@ -29,4 +30,5 @@ class ApiClientImpl(
     }
 
     override val auth = AuthApiClientImpl(client)
+    override val links = LinksApiClientImpl(client)
 }

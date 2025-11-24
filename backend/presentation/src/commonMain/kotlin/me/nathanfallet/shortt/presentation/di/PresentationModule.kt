@@ -8,5 +8,5 @@ import org.koin.dsl.module
 val presentationModule = module {
     single { AuthRoutesDependencies(get(), get()) }
     single { UsersRoutesDependencies(get(), get()) }
-    single { LinksRoutesDependencies(get()) }
+    single { LinksRoutesDependencies(get(), get()) }
 }

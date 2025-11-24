@@ -9,12 +9,16 @@ import kotlin.uuid.toKotlinUuid
 object LinksTable : UUIDTable("links") {
 
     val userId = reference("user_id", UsersTable.id)
+    val url = text("url")
+    val slug = varchar("slug", 255).uniqueIndex()
 
     fun toLink(
         row: ResultRow,
     ) = Link(
         row[id].value.toKotlinUuid(),
         row[userId].value.toKotlinUuid(),
+        row[url],
+        row[slug],
     )
 
 }
