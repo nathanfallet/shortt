@@ -16,4 +16,9 @@ export class LinksLocalDataSource {
             syncStatus: 'synced'
         })))
     }
+
+    async create(link: Link): Promise<Link> {
+        await this.db.links.add(link)
+        return link
+    }
 }
