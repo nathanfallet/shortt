@@ -1,5 +1,6 @@
 package me.nathanfallet.shortt.api.responses.auth
 
+import digital.guimauve.zodable.Zodable
 import kotlinx.serialization.Serializable
 import me.nathanfallet.shortt.api.responses.users.CurrentUserResponse
 import kotlin.js.JsExport
@@ -9,6 +10,7 @@ import kotlin.js.JsExport
  */
 @Serializable
 @JsExport
+@Zodable
 data class LoginResponse(
     /**
      * The current user's information.

@@ -15,6 +15,7 @@ kotlin = "2.2.20"
 ktor = "3.3.1"
 logback = "1.5.20"
 kotlinx-serialization = "1.9.0"
+zodable = "1.7.1"
 koin = "4.1.0"
 opentelemetry = "1.56.0"
 opentelemetry-semconv = "1.34.0"
@@ -80,3 +81,4 @@ kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+zodable = { id = "digital.guimauve.zodable", version.ref = "zodable" }

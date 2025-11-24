@@ -8,4 +8,10 @@ plugins {
     alias(libs.plugins.kotlinJvm) apply false
     alias(libs.plugins.kotlinMultiplatform) apply false
     alias(libs.plugins.ktor) apply false
+    alias(libs.plugins.zodable) apply false
+}
+
+allprojects {
+    group = "me.nathanfallet.shortt"
+    version = "0.0.1"
 }

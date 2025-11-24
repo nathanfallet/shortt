@@ -1,5 +1,6 @@
 package me.nathanfallet.shortt.api.requests.auth
 
+import digital.guimauve.zodable.Zodable
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 
@@ -8,6 +9,7 @@ import kotlin.js.JsExport
  */
 @Serializable
 @JsExport
+@Zodable
 data class RegisterRequest(
     /**
      * The username of the user attempting to register.

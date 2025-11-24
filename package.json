@@ -4,7 +4,8 @@
   "private": true,
   "workspaces": [
     "frontend/webApp",
-    "frontend/shared/build/dist/js/developmentLibrary"
+    "frontend/shared/build/dist/js/developmentLibrary",
+    "backend/api/build/zodable"
   ],
   "scripts": {
     "build": "cd frontend/webApp && npm run build",

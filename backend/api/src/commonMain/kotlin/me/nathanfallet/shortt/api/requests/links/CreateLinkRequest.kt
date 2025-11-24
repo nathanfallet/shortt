@@ -1,5 +1,6 @@
 package me.nathanfallet.shortt.api.requests.links
 
+import digital.guimauve.zodable.Zodable
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 
@@ -8,6 +9,7 @@ import kotlin.js.JsExport
  */
 @Serializable
 @JsExport
+@Zodable
 data class CreateLinkRequest(
     /**
      * The original URL to be shortened.

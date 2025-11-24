@@ -1,5 +1,6 @@
 package me.nathanfallet.shortt.api.responses.links
 
+import digital.guimauve.zodable.Zodable
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 import kotlin.uuid.Uuid
@@ -9,6 +10,7 @@ import kotlin.uuid.Uuid
  */
 @Serializable
 @JsExport
+@Zodable
 data class LinkResponse(
     /**
      * The unique identifier of the shortened link.
