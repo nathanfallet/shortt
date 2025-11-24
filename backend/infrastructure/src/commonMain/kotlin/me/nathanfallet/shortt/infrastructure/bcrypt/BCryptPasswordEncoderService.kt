@@ -1,12 +1,12 @@
 package me.nathanfallet.shortt.infrastructure.bcrypt
 
 import at.favre.lib.crypto.bcrypt.BCrypt
-import me.nathanfallet.shortt.domain.services.PasswordEncoder
+import me.nathanfallet.shortt.domain.services.PasswordEncoderService
 
 /**
- * Implementation of [PasswordEncoder] using BCrypt hashing algorithm.
+ * Implementation of [PasswordEncoderService] using BCrypt hashing algorithm.
  */
-class BCryptPasswordEncoder : PasswordEncoder {
+class BCryptPasswordEncoderService : PasswordEncoderService {
 
     override fun encode(rawPassword: String): String =
         BCrypt.withDefaults().hashToString(12, rawPassword.toCharArray())

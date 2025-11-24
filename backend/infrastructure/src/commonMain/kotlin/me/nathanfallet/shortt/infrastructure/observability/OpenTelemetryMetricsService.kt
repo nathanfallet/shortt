@@ -1,13 +1,13 @@
 package me.nathanfallet.shortt.infrastructure.observability
 
-import me.nathanfallet.shortt.domain.services.MetricsCollector
+import me.nathanfallet.shortt.domain.services.MetricsCollectorService
 
 /**
- * Implementation of [MetricsCollector] using OpenTelemetry.
+ * Implementation of [MetricsCollectorService] using OpenTelemetry.
  */
-class OpenTelemetryMetrics(
+class OpenTelemetryMetricsService(
     telemetryFactory: TelemetryFactory,
-) : MetricsCollector {
+) : MetricsCollectorService {
 
     private val linksClickedCounter = telemetryFactory.getMeter()
         .counterBuilder("links_clicked")

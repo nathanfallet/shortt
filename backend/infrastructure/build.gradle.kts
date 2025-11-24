@@ -19,6 +19,7 @@ kotlin {
             api(libs.koin.ktor)
             api(libs.ktor.serverCore)
             api(libs.ktor.serverMetricsMicrometer)
+            api(libs.ktor.serverAuthJwt)
             api(libs.opentelemetry.api)
             api(libs.opentelemetry.sdk)
             api(libs.opentelemetry.sdk.extension.autoconfigure)

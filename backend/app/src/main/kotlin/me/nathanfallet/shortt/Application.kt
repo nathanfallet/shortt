@@ -3,6 +3,7 @@ package me.nathanfallet.shortt
 import io.ktor.server.application.*
 import io.ktor.server.netty.*
 import me.nathanfallet.shortt.domain.di.domainModule
+import me.nathanfallet.shortt.infrastructure.config.configureSecurity
 import me.nathanfallet.shortt.infrastructure.config.configureTelemetry
 import me.nathanfallet.shortt.infrastructure.di.infrastructureModule
 import me.nathanfallet.shortt.presentation.config.configureErrorHandling
@@ -28,5 +29,6 @@ fun Application.module() {
     configureSerialization()
     configureValidation()
     configureErrorHandling()
+    configureSecurity()
     configureRouting()
 }

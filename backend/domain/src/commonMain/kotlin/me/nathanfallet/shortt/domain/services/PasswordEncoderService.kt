@@ -3,7 +3,7 @@ package me.nathanfallet.shortt.domain.services
 /**
  * Interface for encoding and verifying passwords.
  */
-interface PasswordEncoder {
+interface PasswordEncoderService {
     /**
      * Encodes the raw password.
      *

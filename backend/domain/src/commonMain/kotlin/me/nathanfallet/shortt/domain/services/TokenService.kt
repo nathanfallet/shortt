@@ -6,7 +6,7 @@ import kotlin.uuid.Uuid
 /**
  * Interface for generating tokens.
  */
-interface TokenGenerator {
+interface TokenService {
     /**
      * Generates a token for the given user ID and token type.
      *
