@@ -1,0 +1,40 @@
+name: Build
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up our JDK environment
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 21
+      - name: Install dependencies and run tests
+        run: ./gradlew jvmTest koverXmlReport setupZodablePackage
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up our JDK environment
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 21
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: nathanfallet
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+      - name: Build and publish to Docker Hub
+        run: ./gradlew publishImage

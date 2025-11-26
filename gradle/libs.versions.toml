@@ -26,6 +26,7 @@ hikari = "7.0.2"
 mysql = "9.5.0"
 kourier = "0.3.1"
 bcrypt = "0.10.2"
+mockk = "1.13.12"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -72,6 +73,7 @@ hikari = { module = "com.zaxxer:HikariCP", version.ref = "hikari" }
 kourier-clientRobust = { module = "dev.kourier:amqp-client-robust", version.ref = "kourier" }
 kourier-clientOpentelemetry = { module = "dev.kourier:amqp-client-opentelemetry", version.ref = "kourier" }
 bcrypt = { module = "at.favre.lib:bcrypt", version.ref = "bcrypt" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

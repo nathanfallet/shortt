@@ -1,6 +1,7 @@
 package me.nathanfallet.shortt.client
 
 import io.ktor.client.*
+import io.ktor.client.engine.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.resources.*
@@ -14,8 +15,11 @@ import me.nathanfallet.shortt.client.api.links.LinksApiClientImpl
  */
 class ApiClientImpl(
     private val baseUrl: String,
+    private val clientBuilder: (HttpClientConfig<out HttpClientEngineConfig>.() -> Unit) -> HttpClient = { config ->
+        HttpClient(config)
+    },
 ) : ApiClient {
-    private val client = HttpClient {
+    private val client = clientBuilder {
         install(Resources)
         install(ContentNegotiation) {
             json(Serialization.json)

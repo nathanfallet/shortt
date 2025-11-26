@@ -5,13 +5,27 @@ plugins {
     application
 }
 
-group = "me.nathanfallet.shortt"
-version = "1.0.0"
 application {
     mainClass.set("me.nathanfallet.shortt.ApplicationKt")
 
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
+}
+
+ktor {
+    docker {
+        jreVersion.set(JavaVersion.VERSION_21)
+        localImageName.set("shortt")
+        findProperty("imageTag")?.let { imageTag.set(it.toString()) }
+
+        externalRegistry.set(
+            io.ktor.plugin.features.DockerImageRegistry.dockerHub(
+                appName = provider { "shortt" },
+                username = provider { "nathanfallet" },
+                password = providers.environmentVariable("DOCKER_HUB_PASSWORD")
+            )
+        )
+    }
 }
 
 dependencies {

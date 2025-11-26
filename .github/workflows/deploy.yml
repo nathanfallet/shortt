@@ -1,0 +1,23 @@
+name: Deploy
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up our JDK environment
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 21
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: nathanfallet
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+      - name: Build and publish to Docker Hub
+        run: ./gradlew publishImage -PimageTag=${GITHUB_REF#refs/tags/}
