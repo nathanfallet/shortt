@@ -7,7 +7,10 @@ This is an experimental project.
 
 This is a Kotlin Multiplatform project targeting Android, iOS, Web and Backend.
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
+* [/backend](./server/src/main/kotlin) is for the Ktor backend application.
+
+* [/frontend/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform
+  applications.
   It contains several subfolders:
     - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
     - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
@@ -16,31 +19,16 @@ This is a Kotlin Multiplatform project targeting Android, iOS, Web and Backend.
       Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
       folder is the appropriate location.
 
-* [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
+* [/frontend/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose
+  Multiplatform,
   you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
 
-* [/backend](./server/src/main/kotlin) is for the Ktor backend application.
-
-* [/shared](./shared/src) is for the code that will be shared between all targets in the project.
+* [/frontend/shared](./shared/src) is for the code that will be shared between all targets in the project.
   The most important subfolder is [commonMain](./shared/src/commonMain/kotlin). If preferred, you
   can add code to the platform-specific folders here too.
 
-* [/webApp](./webApp) contains web React application. It uses the Kotlin/JS library produced
-  by the [shared](./shared) module.
-
-### Build and Run Android Application
-
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
-
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:assembleDebug
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:assembleDebug
-  ```
+* [/frontend/webApp](./frontend/webApp) contains web React application. It uses the Kotlin/JS library produced
+  by the [shared](./frontend/shared) module.
 
 ### Build and Run Server
 
@@ -62,20 +50,36 @@ To build and run the development version of the web app, use the run configurati
 in your IDE’s toolbar or run it directly from the terminal:
 
 1. Install [Node.js](https://nodejs.org/en/download) (which includes `npm`)
-2. Build Kotlin/JS shared code:
+2. Build Kotlin/JS shared code and Zodable package:
     - on macOS/Linux
       ```shell
-      ./gradlew :shared:jsBrowserDevelopmentLibraryDistribution
+      ./gradlew :frontend:shared:jsBrowserDevelopmentLibraryDistribution
+      ./gradlew :backend:api:setupZodablePackage
       ```
     - on Windows
       ```shell
-      .\gradlew.bat :shared:jsBrowserDevelopmentLibraryDistribution
+      .\gradlew.bat :frontend:shared:jsBrowserDevelopmentLibraryDistribution
+      .\gradlew.bat :backend:api:setupZodablePackage
       ```
 3. Build and run the web application
    ```shell
    npm install
    npm run start
    ```
+
+### Build and Run Android Application
+
+To build and run the development version of the Android app, use the run configuration from the run widget
+in your IDE’s toolbar or build it directly from the terminal:
+
+- on macOS/Linux
+  ```shell
+  ./gradlew :frontend:composeApp:assembleDebug
+  ```
+- on Windows
+  ```shell
+  .\gradlew.bat :frontend:composeApp:assembleDebug
+  ```
 
 ### Build and Run iOS Application
 
