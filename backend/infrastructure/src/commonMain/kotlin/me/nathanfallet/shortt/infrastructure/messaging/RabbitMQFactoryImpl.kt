@@ -1,5 +1,6 @@
 package me.nathanfallet.shortt.infrastructure.messaging
 
+import dev.kourier.amqp.BuiltinExchangeType
 import dev.kourier.amqp.channel.AMQPChannel
 import dev.kourier.amqp.opentelemetry.withTracing
 import dev.kourier.amqp.robust.createRobustAMQPConnection
@@ -33,7 +34,9 @@ class RabbitMQFactoryImpl(
 
     private val amqpChannel by lazy {
         runBlocking { // TODO: See if we can avoid runBlocking here
-            aMQPConnection.openChannel()
+            aMQPConnection.openChannel().also {
+                it.exchangeDeclare("shortt", BuiltinExchangeType.TOPIC)
+            }
         }
     }
 

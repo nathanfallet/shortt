@@ -23,9 +23,10 @@ koin = "4.1.0"
 opentelemetry = "1.56.0"
 opentelemetry-semconv = "1.34.0"
 opentelemetry-instrumentation = "2.22.0-alpha"
-exposed = "1.0.0-rc-3"
+exposed = "1.0.0-rc-4"
 hikari = "7.0.2"
 mysql = "9.5.0"
+h2 = "2.3.232"
 kourier = "0.3.1"
 bcrypt = "0.10.2"
 mockk = "1.13.12"
@@ -73,6 +74,7 @@ opentelemetry-jdbc = { module = "io.opentelemetry.instrumentation:opentelemetry-
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
 exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
 mysql = { module = "com.mysql:mysql-connector-j", version.ref = "mysql" }
+h2 = { module = "com.h2database:h2", version.ref = "h2" }
 hikari = { module = "com.zaxxer:HikariCP", version.ref = "hikari" }
 kourier-clientRobust = { module = "dev.kourier:amqp-client-robust", version.ref = "kourier" }
 kourier-clientOpentelemetry = { module = "dev.kourier:amqp-client-opentelemetry", version.ref = "kourier" }

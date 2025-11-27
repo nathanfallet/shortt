@@ -6,6 +6,7 @@ import me.nathanfallet.shortt.domain.di.domainModule
 import me.nathanfallet.shortt.infrastructure.config.configureSecurity
 import me.nathanfallet.shortt.infrastructure.config.configureTelemetry
 import me.nathanfallet.shortt.infrastructure.di.infrastructureModule
+import me.nathanfallet.shortt.infrastructure.health.configureHealth
 import me.nathanfallet.shortt.presentation.config.configureErrorHandling
 import me.nathanfallet.shortt.presentation.config.configureRouting
 import me.nathanfallet.shortt.presentation.config.configureSerialization
@@ -31,4 +32,5 @@ fun Application.module() {
     configureErrorHandling()
     configureSecurity()
     configureRouting()
+    configureHealth()
 }

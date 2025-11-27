@@ -7,10 +7,7 @@ import me.nathanfallet.shortt.domain.services.MetricsCollectorService
 import me.nathanfallet.shortt.domain.services.PasswordEncoderService
 import me.nathanfallet.shortt.domain.services.TokenService
 import me.nathanfallet.shortt.infrastructure.bcrypt.BCryptPasswordEncoderService
-import me.nathanfallet.shortt.infrastructure.database.DatabaseFactory
-import me.nathanfallet.shortt.infrastructure.database.MySQLDatabaseFactory
-import me.nathanfallet.shortt.infrastructure.database.TransactionManager
-import me.nathanfallet.shortt.infrastructure.database.TransactionManagerImpl
+import me.nathanfallet.shortt.infrastructure.database.*
 import me.nathanfallet.shortt.infrastructure.database.repositories.links.LinksRepositoryImpl
 import me.nathanfallet.shortt.infrastructure.database.repositories.users.UsersRepositoryImpl
 import me.nathanfallet.shortt.infrastructure.jwt.JwtTokenService
@@ -28,19 +25,29 @@ import org.koin.dsl.module
  */
 val Application.infrastructureModule
     get() = module {
+        single<Application> { this@infrastructureModule }
+
         // Services
         single<DatabaseFactory> {
-            MySQLDatabaseFactory(
-                get(),
-                environment.config.property("database.host").getString(),
-                environment.config.property("database.port").getString().toIntOrNull() ?: 3306,
-                environment.config.property("database.name").getString(),
-                environment.config.property("database.user").getString(),
-                environment.config.property("database.password").getString(),
-                environment.config.property("database.useSSL").getString().toBooleanStrictOrNull() == true,
-                environment.config.property("database.sslMode").getString(),
-                environment.config.property("database.maximumPoolSize").getString().toIntOrNull() ?: 10,
-            )
+            when (environment.config.property("database.protocol").getString()) {
+                "mysql" -> MySQLDatabaseFactory(
+                    get(),
+                    environment.config.property("database.host").getString(),
+                    environment.config.property("database.port").getString().toIntOrNull() ?: 3306,
+                    environment.config.property("database.name").getString(),
+                    environment.config.property("database.user").getString(),
+                    environment.config.property("database.password").getString(),
+                    environment.config.property("database.useSSL").getString().toBooleanStrictOrNull() == true,
+                    environment.config.property("database.sslMode").getString(),
+                    environment.config.property("database.maximumPoolSize").getString().toIntOrNull() ?: 10,
+                )
+
+                "h2" -> H2DatabaseFactory(
+                    environment.config.property("database.name").getString(),
+                )
+
+                else -> error("Unsupported database protocol")
+            }
         }
         single<TransactionManager> { TransactionManagerImpl(get()) }
         single<RabbitMQFactory> {
