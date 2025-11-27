@@ -15,8 +15,12 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 21
-      - name: Install dependencies and run tests
-        run: ./gradlew jvmTest koverXmlReport jsBrowserDevelopmentLibraryDistribution setupZodablePackage
+      - name: Build js library
+        run: ./gradlew jsBrowserDevelopmentLibraryDistribution
+      - name: Build zodable package (should be done after js library)
+        run: ./gradlew setupZodablePackage
+      - name: Run tests and generate coverage reports
+        run: ./gradlew jvmTest koverXmlReport
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
   build:
