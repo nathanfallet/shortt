@@ -6,6 +6,7 @@ import {LinksApiDataSource} from "../infrastructure/datasources/api/LinksApiData
 import {LinksLocalDataSource} from "../infrastructure/datasources/local/LinksLocalDataSource.ts";
 import {Database} from "../infrastructure/datasources/local/Database.ts";
 import {LoginUseCaseImpl} from "../domain/usecases/auth/LoginUseCaseImpl.ts";
+import {RegisterUseCaseImpl} from "../domain/usecases/auth/RegisterUseCaseImpl.ts";
 import {AuthRepository} from "../domain/repositories/AuthRepository.ts";
 import {CreateLinkUseCaseImpl} from "../domain/usecases/links/CreateLinkUseCaseImpl.ts";
 import {LinksRepository} from "../domain/repositories/LinksRepository.ts";
@@ -32,6 +33,10 @@ container.register({
 
     // Usecases
     loginUseCase: asFunction(() => new LoginUseCaseImpl(
+        container.resolve<AuthRepository>("authRepository"),
+    )).singleton(),
+
+    registerUseCase: asFunction(() => new RegisterUseCaseImpl(
         container.resolve<AuthRepository>("authRepository"),
     )).singleton(),
 

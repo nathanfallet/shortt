@@ -1,5 +1,7 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom'
 import {LoginScreen} from "../screens/auth/LoginScreen.tsx";
+import {RegisterScreen} from "../screens/auth/RegisterScreen.tsx";
+import {LinksScreen} from "../screens/links/LinksScreen.tsx";
 import {ProtectedRoute} from "./auth/ProtectedRoute.tsx";
 
 export const Router = () => {
@@ -8,24 +10,18 @@ export const Router = () => {
             <Routes>
                 {/* Public routes */}
                 <Route path="/login" element={<LoginScreen/>}/>
-                {/*<Route path="/register" element={<RegisterScreen/>}/>*/}
+                <Route path="/register" element={<RegisterScreen/>}/>
 
                 {/* Protected routes */}
+                <Route path="/" element={<Navigate to="/links" replace/>}/>
                 <Route
-                    path="/"
+                    path="/links"
                     element={
                         <ProtectedRoute>
-                            <div>Layout Idk what that is but children is required</div>
-                            {/*<Layout />*/}
+                            <LinksScreen/>
                         </ProtectedRoute>
                     }
-                >
-                    {/*
-                    <Route index element={<DashboardScreen/>}/>
-                    <Route path="links" element={<LinksScreen/>}/>
-                    <Route path="links/:id" element={<LinkDetailScreen/>}/>
-                    */}
-                </Route>
+                />
             </Routes>
         </BrowserRouter>
     )

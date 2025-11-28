@@ -1,30 +1,26 @@
 import {FormEvent, useMemo, useState} from 'react'
-import {useLocation, useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import {useAuthStore} from "../../stores/authStore.ts";
-import {useLogin} from "../../hooks/auth/useLogin.ts";
+import {useRegister} from "../../hooks/auth/useRegister.ts";
 import container from "../../../di/container.ts";
-import {LoginUseCase} from "../../../domain/usecases/auth/LoginUseCase.ts";
+import {RegisterUseCase} from "../../../domain/usecases/auth/RegisterUseCase.ts";
 
-export const LoginScreen = () => {
-    // TODO: Is it the right place to resolve the use case?
-    const loginUseCase = useMemo(() => container.resolve<LoginUseCase>("loginUseCase"), [])
+export const RegisterScreen = () => {
+    const registerUseCase = useMemo(() => container.resolve<RegisterUseCase>("registerUseCase"), [])
 
     const navigate = useNavigate()
-    const location = useLocation()
-    const {login, isLoading} = useLogin(loginUseCase)
+    const {register, isLoading} = useRegister(registerUseCase)
     const error = useAuthStore((state) => state.error)
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const from = location.state?.from?.pathname || '/'
-
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
 
         try {
-            await login(username, password)
-            navigate(from, {replace: true})
+            await register(username, password)
+            navigate('/login', {replace: true})
         } catch {
             // Error handled in hook
         }
@@ -33,7 +29,7 @@ export const LoginScreen = () => {
     return (
         <div className="min-h-screen flex items-center justify-center">
             <form onSubmit={handleSubmit} className="w-full max-w-md p-8">
-                <h1 className="text-2xl font-bold mb-6">Login</h1>
+                <h1 className="text-2xl font-bold mb-6">Register</h1>
 
                 {error ? (
                     <div className="bg-red-100 text-red-700 p-3 rounded mb-4">
@@ -68,7 +64,7 @@ export const LoginScreen = () => {
                     disabled={isLoading}
                     className="w-full bg-blue-500 text-white p-2 rounded disabled:opacity-50"
                 >
-                    {isLoading ? 'Logging in...' : 'Login'}
+                    {isLoading ? 'Registering...' : 'Register'}
                 </button>
             </form>
         </div>
