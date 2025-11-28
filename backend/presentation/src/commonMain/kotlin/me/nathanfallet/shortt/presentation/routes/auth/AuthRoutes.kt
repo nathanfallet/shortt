@@ -1,7 +1,6 @@
 package me.nathanfallet.shortt.presentation.routes.auth
 
-import io.ktor.server.request.*
-import io.ktor.server.resources.post
+import io.ktor.server.resources.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import me.nathanfallet.shortt.api.requests.auth.LoginRequest
@@ -24,13 +23,11 @@ data class AuthRoutesDependencies(
  * Configures authentication routes.
  */
 fun Route.authRoutes(dependencies: AuthRoutesDependencies) = with(dependencies) {
-    post<AuthApi.Register> {
-        val request = call.receive<RegisterRequest>()
+    post<AuthApi.Register, RegisterRequest> { _, request ->
         val user = registerUserUseCase(request.username, request.password)
         call.respond(user.toRegisterResponse())
     }
-    post<AuthApi.Login> {
-        val request = call.receive<LoginRequest>()
+    post<AuthApi.Login, LoginRequest> { _, request ->
         val authenticatedUser = loginUserUseCase(request.username, request.password)
         call.respond(authenticatedUser.toLoginResponse())
     }

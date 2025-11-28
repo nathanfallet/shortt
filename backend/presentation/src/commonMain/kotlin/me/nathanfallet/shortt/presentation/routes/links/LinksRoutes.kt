@@ -1,8 +1,6 @@
 package me.nathanfallet.shortt.presentation.routes.links
 
-import io.ktor.server.request.*
 import io.ktor.server.resources.*
-import io.ktor.server.resources.post
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import me.nathanfallet.shortt.api.requests.links.CreateLinkRequest
@@ -30,9 +28,8 @@ fun Route.linksRoutes(dependencies: LinksRoutesDependencies) = with(dependencies
         val links = getLinksForUserUseCase(userId).map { it.toLinkResponse() }
         call.respond(LinksResponse(links))
     }
-    post<LinksApi> {
+    post<LinksApi, CreateLinkRequest> { _, request ->
         val userId = call.userId()
-        val request = call.receive<CreateLinkRequest>()
         val link = createLinkUseCase(request.url, request.slug, userId)
         call.respond(link.toLinkResponse())
     }
