@@ -15,6 +15,7 @@ import me.nathanfallet.shortt.infrastructure.messaging.MessageBroker
 import me.nathanfallet.shortt.infrastructure.messaging.RabbitMQFactory
 import me.nathanfallet.shortt.infrastructure.messaging.RabbitMQFactoryImpl
 import me.nathanfallet.shortt.infrastructure.messaging.RabbitMQMessageBroker
+import me.nathanfallet.shortt.infrastructure.messaging.handlers.LinkExpiredHandler
 import me.nathanfallet.shortt.infrastructure.observability.OpenTelemetryMetricsService
 import me.nathanfallet.shortt.infrastructure.observability.TelemetryFactory
 import me.nathanfallet.shortt.infrastructure.observability.TelemetryFactoryImpl
@@ -71,6 +72,9 @@ val Application.infrastructureModule
                 environment.config.property("jwt.audience").getString()
             )
         }
+
+        // Handlers
+        single { LinkExpiredHandler() }
 
         // Repositories
         single<UsersRepository> { UsersRepositoryImpl(get()) }

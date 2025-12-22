@@ -7,6 +7,11 @@ import dev.kourier.amqp.channel.AMQPChannel
  */
 interface RabbitMQFactory {
     /**
+     * Initializes the message broker connection and any necessary resources.
+     */
+    suspend fun initialize()
+    
+    /**
      * Gets the AMQPChannel instance.
      *
      * @return AMQPChannel instance

@@ -27,7 +27,7 @@ exposed = "1.0.0-rc-4"
 hikari = "7.0.2"
 mysql = "9.5.0"
 h2 = "2.3.232"
-kourier = "0.3.1"
+kourier = "0.4.0"
 bcrypt = "0.10.2"
 mockk = "1.13.12"
 
@@ -56,6 +56,7 @@ ktor-serverStatusPages = { module = "io.ktor:ktor-server-status-pages", version.
 ktor-serverRequestValidation = { module = "io.ktor:ktor-server-request-validation", version.ref = "ktor" }
 ktor-serverAuthJwt = { module = "io.ktor:ktor-server-auth-jwt", version.ref = "ktor" }
 ktor-serverCors = { module = "io.ktor:ktor-server-cors", version.ref = "ktor" }
+ktor-serverCallId = { module = "io.ktor:ktor-server-call-id", version.ref = "ktor" }
 ktor-serverNetty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor" }
 ktor-serverTestHost = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor" }
 ktor-clientCore = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }

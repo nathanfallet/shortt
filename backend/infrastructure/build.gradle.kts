@@ -21,6 +21,7 @@ kotlin {
             api(libs.ktor.serverCore)
             api(libs.ktor.serverMetricsMicrometer)
             api(libs.ktor.serverAuthJwt)
+            api(libs.ktor.serverCallId)
             api(libs.opentelemetry.api)
             api(libs.opentelemetry.sdk)
             api(libs.opentelemetry.sdk.extension.autoconfigure)
