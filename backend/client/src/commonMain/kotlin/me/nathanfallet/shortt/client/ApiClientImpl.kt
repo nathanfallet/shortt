@@ -20,6 +20,7 @@ class ApiClientImpl(
     },
 ) : ApiClient {
     private val client = clientBuilder {
+        expectSuccess = true
         install(Resources)
         install(ContentNegotiation) {
             json(Serialization.json)
