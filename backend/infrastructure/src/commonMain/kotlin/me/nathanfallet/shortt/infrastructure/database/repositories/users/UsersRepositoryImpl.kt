@@ -9,7 +9,6 @@ import org.jetbrains.exposed.v1.jdbc.SchemaUtils
 import org.jetbrains.exposed.v1.jdbc.insert
 import org.jetbrains.exposed.v1.jdbc.selectAll
 import kotlin.uuid.Uuid
-import kotlin.uuid.toJavaUuid
 
 /**
  * Implementation of the [UsersRepository] interface using Exposed framework.
@@ -35,7 +34,7 @@ class UsersRepositoryImpl(
         transactionManager.suspendTransaction {
             UsersTable
                 .selectAll()
-                .where { UsersTable.id eq id.toJavaUuid() }
+                .where { UsersTable.id eq id }
                 .map(UsersTable::toUser)
                 .firstOrNull()
         }

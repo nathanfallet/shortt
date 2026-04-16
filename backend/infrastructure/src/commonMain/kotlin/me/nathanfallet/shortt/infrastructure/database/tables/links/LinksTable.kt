@@ -3,13 +3,12 @@ package me.nathanfallet.shortt.infrastructure.database.tables.links
 import me.nathanfallet.shortt.domain.models.links.Link
 import me.nathanfallet.shortt.infrastructure.database.tables.users.UsersTable
 import org.jetbrains.exposed.v1.core.ResultRow
-import org.jetbrains.exposed.v1.core.dao.id.UUIDTable
-import kotlin.uuid.toKotlinUuid
+import org.jetbrains.exposed.v1.core.dao.id.UuidTable
 
 /**
  * Table object representing the "links" table in the database.
  */
-object LinksTable : UUIDTable("links") {
+object LinksTable : UuidTable("links") {
     /**
      * Reference to the user who created the link.
      */
@@ -35,8 +34,8 @@ object LinksTable : UUIDTable("links") {
     fun toLink(
         row: ResultRow,
     ) = Link(
-        row[id].value.toKotlinUuid(),
-        row[userId].value.toKotlinUuid(),
+        row[id].value,
+        row[userId].value,
         row[url],
         row[slug],
     )

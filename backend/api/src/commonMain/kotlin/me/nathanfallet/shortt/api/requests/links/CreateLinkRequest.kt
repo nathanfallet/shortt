@@ -1,6 +1,6 @@
 package me.nathanfallet.shortt.api.requests.links
 
-import digital.guimauve.zodable.Zodable
+import dev.zodable.Zodable
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 

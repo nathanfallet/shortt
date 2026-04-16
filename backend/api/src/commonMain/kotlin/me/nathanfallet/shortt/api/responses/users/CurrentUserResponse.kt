@@ -1,6 +1,6 @@
 package me.nathanfallet.shortt.api.responses.users
 
-import digital.guimauve.zodable.Zodable
+import dev.zodable.Zodable
 import kotlinx.serialization.Serializable
 import kotlin.js.JsExport
 import kotlin.uuid.Uuid

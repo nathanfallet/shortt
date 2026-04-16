@@ -1,6 +1,6 @@
 package me.nathanfallet.shortt.api.responses.auth
 
-import digital.guimauve.zodable.Zodable
+import dev.zodable.Zodable
 import kotlinx.serialization.Serializable
 import me.nathanfallet.shortt.api.responses.users.CurrentUserResponse
 import kotlin.js.JsExport
