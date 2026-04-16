@@ -1,29 +1,26 @@
 package me.nathanfallet.shortt.infrastructure.health
 
+import dev.kourier.amqp.connection.ConnectionState
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
-import me.nathanfallet.shortt.infrastructure.database.TransactionManager
+import me.nathanfallet.shortt.infrastructure.database.DatabaseFactory
 import me.nathanfallet.shortt.infrastructure.messaging.RabbitMQFactory
 import org.koin.ktor.ext.inject
 
 fun Application.configureHealth() {
-    val transactionManager by inject<TransactionManager>()
+    val databaseFactory by inject<DatabaseFactory>()
     val rabbitMQFactory by inject<RabbitMQFactory>()
 
     val checks: Map<String, suspend () -> Boolean> = mapOf(
         "database" to {
-            transactionManager.transaction {
-                //exec("SELECT 1") { it.next() } == true // TODO: Fix
-                true
-            }
+            databaseFactory.isHealthy()
         },
         "messaging" to {
-            //rabbitMQFactory.getChannel().exchangeDeclarePassive("shortt") // TODO: Find a way to make it pass tests
-            true
+            rabbitMQFactory.getChannel().state == ConnectionState.OPEN
         }
     )
 

@@ -18,4 +18,5 @@ class H2DatabaseFactory(
     }
 
     override fun getDatabase(): Database = db
+    override fun isHealthy(): Boolean = true
 }

@@ -47,8 +47,7 @@ class MySQLDatabaseFactory(
      */
     maximumPoolSize: Int,
 ) : DatabaseFactory {
-
-    private val db: Database by lazy {
+    private val dataSource: HikariDataSource by lazy {
         val hikariConfig = HikariConfig().apply {
             jdbcUrl = buildMySQLConnectionUrl(host, port, name, useSSL, sslMode)
             driverClassName = "com.mysql.cj.jdbc.Driver"
@@ -64,7 +63,10 @@ class MySQLDatabaseFactory(
             keepaliveTime = 300000
             leakDetectionThreshold = 60000
         }
-        val dataSource = HikariDataSource(hikariConfig)
+        HikariDataSource(hikariConfig)
+    }
+
+    private val db: Database by lazy {
         val instrumentedDataSource = JdbcTelemetry.create(telemetryFactory.getOpenTelemetry()).wrap(dataSource)
         Database.connect(instrumentedDataSource)
     }
@@ -95,4 +97,7 @@ class MySQLDatabaseFactory(
         return "jdbc:mysql://$host:$port/$name?${params.joinToString("&")}"
     }
 
+    override fun isHealthy(): Boolean {
+        return !dataSource.isClosed && dataSource.isRunning
+    }
 }

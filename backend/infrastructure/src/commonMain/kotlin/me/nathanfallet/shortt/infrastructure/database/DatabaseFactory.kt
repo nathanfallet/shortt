@@ -10,4 +10,9 @@ interface DatabaseFactory {
      * Gets the Database instance.
      */
     fun getDatabase(): Database
+
+    /**
+     * Checks if the database connection is healthy.
+     */
+    fun isHealthy(): Boolean
 }

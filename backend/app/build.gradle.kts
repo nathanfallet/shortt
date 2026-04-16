@@ -39,6 +39,14 @@ dependencies {
     implementation(libs.ktor.serverNetty)
 
     testImplementation(libs.ktor.serverTestHost)
-    testImplementation(libs.kotlin.testJunit)
+    testImplementation(libs.kotlin.testJunit5)
     testImplementation(libs.h2)
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+
+tasks.register("jvmTest") {
+    dependsOn("test") // To run normal `jvm` module `test` task when running all `jvmTest` tasks.
 }
