@@ -29,6 +29,7 @@ kotlin {
             api(libs.ktor.clientCore)
             api(libs.ktor.clientResources)
             api(libs.ktor.clientContentNegotiation)
+            api(libs.ktor.clientCallId)
             api(libs.ktor.serializationKotlinxJson)
         }
         commonTest.dependencies {

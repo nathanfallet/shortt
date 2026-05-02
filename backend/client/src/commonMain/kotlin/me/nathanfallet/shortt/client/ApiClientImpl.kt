@@ -3,6 +3,7 @@ package me.nathanfallet.shortt.client
 import io.ktor.client.*
 import io.ktor.client.engine.*
 import io.ktor.client.plugins.*
+import io.ktor.client.plugins.callid.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.resources.*
 import io.ktor.serialization.kotlinx.json.*
@@ -22,6 +23,7 @@ class ApiClientImpl(
     private val client = clientBuilder {
         expectSuccess = true
         install(Resources)
+        install(CallId)
         install(ContentNegotiation) {
             json(Serialization.json)
         }
