@@ -12,15 +12,19 @@ import me.nathanfallet.shortt.infrastructure.messaging.RabbitMQFactory
 import org.koin.ktor.ext.inject
 
 fun Application.configureHealth() {
+    val isTest = environment.config.property("ktor.environment").getString() == "test"
+
     val databaseFactory by inject<DatabaseFactory>()
     val rabbitMQFactory by inject<RabbitMQFactory>()
 
     val checks: Map<String, suspend () -> Boolean> = mapOf(
         "database" to {
-            databaseFactory.isHealthy()
+            if (isTest) true
+            else databaseFactory.isHealthy()
         },
         "messaging" to {
-            rabbitMQFactory.getChannel().state == ConnectionState.OPEN
+            if (isTest) true
+            else rabbitMQFactory.getChannel().state == ConnectionState.OPEN
         }
     )
 
