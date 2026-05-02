@@ -14,10 +14,10 @@ import dev.kourier.amqp.states.declaredQueue
 import io.ktor.callid.*
 import io.ktor.http.*
 import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.datetime.Clock
 import me.nathanfallet.shortt.api.Serialization
 import me.nathanfallet.shortt.infrastructure.messaging.MessageBroker
 import me.nathanfallet.shortt.infrastructure.messaging.MessageHandlerResult
+import kotlin.time.Clock
 
 /**
  * Publishes a message of type T to the specified exchange with the given routing key.
@@ -125,16 +125,21 @@ suspend inline fun AMQPChannel.handleWithRetryAndDead(
     delivery: AMQPResponse.Channel.Message.Delivery,
     maxXDeathCount: Int = 5,
     dead: Boolean = true,
-    block: () -> MessageHandlerResult,
+    block: (HandleWithRetryAndDeadContext) -> MessageHandlerResult,
 ): MessageHandlerResult {
+    val retryCount = delivery.message.properties.headers?.xDeathCount ?: 0L
+    val tryAgain = retryCount < maxXDeathCount
+    val context = HandleWithRetryAndDeadContext(
+        retryCount = retryCount,
+        tryAgain = tryAgain,
+        dead = dead
+    )
     return try {
-        block()
+        block(context)
     } catch (e: Exception) {
-        val retryCount = delivery.message.properties.headers?.xDeathCount ?: 0L
-        val tryAgain = retryCount < maxXDeathCount
-        val reason = e.message ?: "Unknown error"
-        if (tryAgain) return MessageHandlerResult.Failure(reason, requeue = false) // Reject to dlx
-        if (dead) sendToDeadLetterQueue(delivery, reason)
+        val reason = e.toString() // "<class name>: <message>"
+        if (context.tryAgain) return MessageHandlerResult.Failure(reason, requeue = false) // Reject to dlx
+        if (context.dead) sendToDeadLetterQueue(delivery, reason)
         return MessageHandlerResult.Success // Moved to dead-letter queue or discarded
     }
 }
