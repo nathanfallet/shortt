@@ -31,6 +31,7 @@ kotlin {
             api(libs.opentelemetry.ktor)
             api(libs.opentelemetry.micrometer)
             api(libs.opentelemetry.jdbc)
+            api(libs.opentelemetry.hikaricp)
             api(libs.exposed.core)
             api(libs.exposed.jdbc)
             api(libs.mysql)

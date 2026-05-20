@@ -74,6 +74,7 @@ opentelemetry-semconv = { module = "io.opentelemetry.semconv:opentelemetry-semco
 opentelemetry-ktor = { module = "io.opentelemetry.instrumentation:opentelemetry-ktor-3.0", version.ref = "opentelemetry-instrumentation" }
 opentelemetry-micrometer = { module = "io.opentelemetry.instrumentation:opentelemetry-micrometer-1.5", version.ref = "opentelemetry-instrumentation" }
 opentelemetry-jdbc = { module = "io.opentelemetry.instrumentation:opentelemetry-jdbc", version.ref = "opentelemetry-instrumentation" }
+opentelemetry-hikaricp = { module = "io.opentelemetry.instrumentation:opentelemetry-hikaricp-3.0", version.ref = "opentelemetry-instrumentation" }
 exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
 exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
 mysql = { module = "com.mysql:mysql-connector-j", version.ref = "mysql" }
