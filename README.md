@@ -1,3 +1,6 @@
+> [!WARNING]
+> **Discontinued.** This project is no longer maintained and has been replaced by [asonar](https://github.com/nathanfallet/asonar), an actually used project that serves the same purpose as a Clean Architecture reference.
+
 # Shortt
 
 Url shortener built with clean architecture in mind.
